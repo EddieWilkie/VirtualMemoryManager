@@ -1,3 +1,4 @@
+package ace;
 
 public interface IPhysicalMemory {
 	public void setFrame(byte[] frame);

@@ -1,3 +1,5 @@
+package ace;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,6 +32,7 @@ public class AddressTranslator {
 			System.out.println("Value: " + pageTable.getValue(pageNumber, offset));
 		}
 			System.out.println("PageFaultPercent: " + (pageTable.getPageFaultCount()/256)*100+ "%");
+			System.out.println("Updated Version using GitHub");
 	}
 
 	public static void main(String[] args) {
