@@ -993,8 +993,9 @@ Virtual address: 6957 Physical Address: 26413 Value: 0
 Virtual address: 2301 Physical Address: 35325 Value: 0
 Virtual address: 7736 Physical Address: 57912 Value: 0
 Virtual address: 31260 Physical Address: 23324 Value: 0
-Virtual address: 17071 Physical Address: 62639 Value: -85
+Virtual address: 17071 Physical Address: 175 Value: -85
 Virtual address: 8940 Physical Address: 46572 Value: 0
 Virtual address: 9929 Physical Address: 44745 Value: 0
 Virtual address: 45563 Physical Address: 46075 Value: 126
 Virtual address: 12107 Physical Address: 2635 Value: -46
+PageFaultPercent: 95.3125%
