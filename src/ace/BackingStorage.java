@@ -16,9 +16,9 @@ public class BackingStorage implements IBackingStorage{
 	}
 
 	public void readFrame(int pageNumber) throws IOException{
-		byte[] test = new byte[256];
+		byte[] page = new byte[256];
 		backingStore.seek(pageNumber << 8);
-		backingStore.readFully(test);
-		physicalMem.setFrame(test);
+		backingStore.readFully(page);
+		physicalMem.setFrame(page);
 	}
 }

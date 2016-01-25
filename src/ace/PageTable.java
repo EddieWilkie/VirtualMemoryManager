@@ -23,7 +23,7 @@ public class PageTable implements IPageTable {
 
 	private void initArray() {
 		for (int i = 0; i < pageTable.length; i++)
-			pageTable[i] = 0;
+			pageTable[i] = -1;
 	}
 
 	public void setFrameNumber(int value) {
@@ -31,8 +31,9 @@ public class PageTable implements IPageTable {
 	}
 
 	public int getFrameNumber(int pageNumber) {
-		if (pageTable[pageNumber] == 0)
+		if (pageTable[pageNumber] == -1)
 			pageFault(pageNumber);
+		
 
 		return pageTable[pageNumber];
 	}
@@ -48,7 +49,7 @@ public class PageTable implements IPageTable {
 	private void pageFault(int pageNumber) {
 		try {
 			pageFaultCount++;
-			this.currentPageNumber = pageNumber;
+			currentPageNumber = pageNumber;
 			backingStore.readFrame(pageNumber);
 		} catch (IOException e) {
 			e.printStackTrace();

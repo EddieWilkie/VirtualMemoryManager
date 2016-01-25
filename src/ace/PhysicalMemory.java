@@ -3,10 +3,11 @@ package ace;
 public class PhysicalMemory implements IPhysicalMemory{
 	IPageTable pageTable;
 	private Frame[] frameTable = new Frame[256];
-	private int freeFrame = 0;
+	private int freeFrame;
 
 	public PhysicalMemory(IPageTable pageTable) {
 		this.pageTable = pageTable;
+		freeFrame = 0;
 		fillArray();
 	}
 
