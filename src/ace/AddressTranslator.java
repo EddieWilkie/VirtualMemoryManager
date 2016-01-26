@@ -30,6 +30,7 @@ public class AddressTranslator {
 			System.out.println("Value: " + tlb.getValue(pageNumber, offset));
 		}
 			System.out.println("PageFaultPercent: " + (tlb.getPageFaultCount()/256)*100+ "%");
+
 	}
 
 	public static void main(String[] args) {
