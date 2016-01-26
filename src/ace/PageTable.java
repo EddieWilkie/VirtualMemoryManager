@@ -9,11 +9,7 @@ public class PageTable implements IPageTable {
 	private int pageHitCount, pageFaultCount;
 	private int currentPageNumber;
 
-<<<<<<< HEAD
-	public PageTable(TLB tlb,IPhysicalMemory physicalMemory) {
-=======
 	public PageTable(IPhysicalMemory physicalMemory) {
->>>>>>> TLB
 		initArray();
 		pageFaultCount = 0;
 		currentPageNumber = 0;

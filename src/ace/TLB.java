@@ -9,14 +9,6 @@ public class TLB implements ITLB{
 	private IPhysicalMemory physicalMemory;
 	private IPageTable pageTable;
 	private int currentPageNumber = 0;
-<<<<<<< HEAD
-	
-	public TLB(){
-	initArrays();
-	this.pageNumber = new int[16];
-	this.frameNumber = new int[16];
-	pageTable = new PageTable(this,physicalMemory);
-=======
 	private int counter = 0;
 	
 	public TLB(){
@@ -26,7 +18,7 @@ public class TLB implements ITLB{
 	physicalMemory = new PhysicalMemory(this);
 	pageTable = new PageTable(physicalMemory);
 	
->>>>>>> TLB
+
 	}
 	
 	private void initArrays(){
@@ -37,14 +29,6 @@ public class TLB implements ITLB{
 	}
 
 	public void setFrameNumber(int frameNumber){
-<<<<<<< HEAD
-		Random r = new Random();
-		int Low = 0;
-		int High = 15;
-		int Result = r.nextInt(High-Low) + Low;
-		this.pageNumber[Result] = currentPageNumber;
-		this.frameNumber[Result] = frameNumber;
-=======
 		if(counter > 15){
 		Random r = new Random();
 		int Low = 0;
@@ -64,22 +48,11 @@ public class TLB implements ITLB{
 	public int getFrameNumber(int pageNumber){
 		currentPageNumber = pageNumber;
 		return pageTable.getFrameNumber(pageNumber);
->>>>>>> TLB
+
 	}
 	
 	public int getValue(int pageNum, int offset){
 		this.currentPageNumber = pageNum;
-<<<<<<< HEAD
-		System.out.println("test");
-//		for(int i = 0; i < this.pageNumber.length; i++){
-//			if(this.pageNumber[i] == pageNum){
-//				System.out.println(this.pageNumber[i]);
-//				return physicalMemory.getFrameValue(this.frameNumber[i],offset);
-//			}
-//		}
-		return 1;
-		//return pageTable.getValue(pageNum, offset);
-=======
 		for(int i = 0; i < this.pageNumber.length; i++){
 			if(this.pageNumber[i] == pageNum){
 				return physicalMemory.getFrameValue(this.frameNumber[i],offset);
@@ -90,7 +63,6 @@ public class TLB implements ITLB{
 	
 	public float getPageFaultCount(){
 		return pageTable.getPageFaultCount();
-		
->>>>>>> TLB
+
 	}
 }
