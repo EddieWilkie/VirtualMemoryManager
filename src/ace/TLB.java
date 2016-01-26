@@ -1,6 +1,5 @@
 package ace;
 
-import java.util.Hashtable;
 import java.util.Random;
 
 public class TLB implements ITLB{
@@ -17,7 +16,6 @@ public class TLB implements ITLB{
 	initArrays();
 	physicalMemory = new PhysicalMemory(this);
 	pageTable = new PageTable(physicalMemory);
-	
 	}
 	
 	private void initArrays(){

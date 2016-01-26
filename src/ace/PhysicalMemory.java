@@ -22,6 +22,7 @@ public class PhysicalMemory implements IPhysicalMemory{
 		frameTable[freeFrame].setPage(frame);
 		tlb.setFrameNumber(freeFrame);
 		freeFrame++;
+		
 	}
 
 	public byte getFrameValue(int frameNumber, int offset) {

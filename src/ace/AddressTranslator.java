@@ -5,19 +5,18 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-
 public class AddressTranslator {
 	FileReader fr;
 	BufferedReader br;
 	String address = "";
 	int pageNumber, offset;
 	TLB tlb;
-	
 
 	public AddressTranslator() throws FileNotFoundException {
 		fr = new FileReader("InputFile.txt");
 		br = new BufferedReader(fr);
 		tlb = new TLB();
+
 	}
 
 	public void begin() throws IOException {
@@ -29,7 +28,7 @@ public class AddressTranslator {
 			System.out.print("Physical address: " + ((tlb.getFrameNumber(pageNumber) << 8) + offset) + " ");
 			System.out.println("Value: " + tlb.getValue(pageNumber, offset));
 		}
-			System.out.println("PageFaultPercent: " + (tlb.getPageFaultCount()/256)*100+ "%");
+		System.out.println("PageFaultPercent: " + (tlb.getPageFaultCount() / 256) * 100 + "%");
 	}
 
 	public static void main(String[] args) {
