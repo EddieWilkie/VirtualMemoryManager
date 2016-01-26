@@ -9,13 +9,13 @@ public class PageTable implements IPageTable {
 	private int pageHitCount, pageFaultCount;
 	private int currentPageNumber;
 
-	public PageTable(TLB tlb,IPhysicalMemory physicalMemory) {
+	public PageTable(IPhysicalMemory physicalMemory) {
 		initArray();
 		pageFaultCount = 0;
 		currentPageNumber = 0;
 		physicalMem = physicalMemory;
 		try {
-			backingStore = new BackingStorage(physicalMem);
+			backingStore = new BackingStorage(physicalMemory);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
