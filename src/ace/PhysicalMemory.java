@@ -2,7 +2,7 @@ package ace;
 
 public class PhysicalMemory implements IPhysicalMemory{
 	IPageTable pageTable;
-	private Frame[] frameTable = new Frame[256];
+	private Frame[] frameTable = new Frame[128];
 	private int freeFrame;
 	TLB tlb;
 
@@ -19,6 +19,9 @@ public class PhysicalMemory implements IPhysicalMemory{
 	}
 
 	public void setFrame(byte[] frame) {
+		if(freeFrame == 128)
+			freeFrame = 0;
+		
 		frameTable[freeFrame].setPage(frame);
 		tlb.setFrameNumber(freeFrame);
 		freeFrame++;
