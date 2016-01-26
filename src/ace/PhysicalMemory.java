@@ -6,8 +6,12 @@ public class PhysicalMemory implements IPhysicalMemory{
 	private int freeFrame;
 	TLB tlb;
 
+<<<<<<< HEAD
 	public PhysicalMemory(IPageTable pageTable,TLB tlb) {
 		this.pageTable = pageTable;
+=======
+	public PhysicalMemory(TLB tlb) {
+>>>>>>> TLB
 		this.tlb = tlb;
 		freeFrame = 0;
 		fillArray();
@@ -21,7 +25,10 @@ public class PhysicalMemory implements IPhysicalMemory{
 
 	public void setFrame(byte[] frame) {
 		frameTable[freeFrame].setPage(frame);
+<<<<<<< HEAD
 		pageTable.setFrameNumber(freeFrame);
+=======
+>>>>>>> TLB
 		tlb.setFrameNumber(freeFrame);
 		freeFrame++;
 	}
