@@ -25,7 +25,7 @@ public class PhysicalMemory implements IPhysicalMemory{
 	}
 
 	public void setFrame(byte[] frame) {
-		if(fifo.size() < 128){
+		if(freeFrame < 128){
 			fifo.add(freeFrame);
 			frameTable[freeFrame].setPage(frame);
 			tlb.setFrameNumber(freeFrame);
