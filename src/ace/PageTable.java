@@ -9,11 +9,11 @@ public class PageTable implements IPageTable {
 	private int pageHitCount, pageFaultCount;
 	private int currentPageNumber;
 
-	public PageTable() {
+	public PageTable(TLB tlb,IPhysicalMemory physicalMemory) {
 		initArray();
 		pageFaultCount = 0;
 		currentPageNumber = 0;
-		physicalMem = new PhysicalMemory(this);
+		physicalMem = physicalMemory;
 		try {
 			backingStore = new BackingStorage(physicalMem);
 		} catch (FileNotFoundException e) {
@@ -43,6 +43,9 @@ public class PageTable implements IPageTable {
 	}
 
 	public int getValue(int pageNumber, int offset) {
+		if (pageTable[pageNumber] == -1)
+			pageFault(pageNumber);
+		
 		return physicalMem.getFrameValue(pageTable[pageNumber], offset);
 	}
 
