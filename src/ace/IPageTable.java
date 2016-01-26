@@ -7,4 +7,5 @@ public interface IPageTable {
 	public int getCurrentPageNumber();
 	public int getValue(int pageNumber, int offset);
 	public float getPageFaultCount();
+	public void removeFrameNumber(int pageNumber);
 }

@@ -61,4 +61,14 @@ public class TLB implements ITLB{
 		return pageTable.getPageFaultCount();
 		
 	}
+	
+	public void removeFrames(int frameNumber){
+		for(int i =  0; i < this.frameNumber.length; i++){
+			if(this.frameNumber[i] == frameNumber){
+				pageNumber[i] = -1;
+				this.frameNumber[i] = -1;
+			}
+		}
+		pageTable.removeFrameNumber(frameNumber);
+	}
 }

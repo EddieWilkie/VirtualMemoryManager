@@ -16,7 +16,6 @@ public class AddressTranslator {
 		fr = new FileReader("InputFile.txt");
 		br = new BufferedReader(fr);
 		tlb = new TLB();
-
 	}
 
 	public void begin() throws IOException {
