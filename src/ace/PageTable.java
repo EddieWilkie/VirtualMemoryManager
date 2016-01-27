@@ -31,9 +31,10 @@ public class PageTable implements IPageTable {
 	}
 	
 	public void removeFrameNumber(int frameNumber){
-		for(int i =  0; i < this.pageTable.length; i++){
+		for(int i = 0; i < this.pageTable.length; i++){
 			if(this.pageTable[i] == frameNumber){
 				pageTable[i] = -1;
+				break;
 			}
 		}
 	}
