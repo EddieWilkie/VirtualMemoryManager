@@ -24,21 +24,18 @@ public class PhysicalMemory implements IPhysicalMemory {
 	}
 
 	public void setFrame(byte[] frame) {
-		if (freeFrame < 128) {
+		if (fifo.size() < frameTable.length) {
 			fifo.add(freeFrame);
 			frameTable[freeFrame].setPage(frame);
 			tlb.setFrameNumber(freeFrame);
 			freeFrame++;
 		} else {
-
 			int head = fifo.remove();
-			// System.out.print("head :" + head + " ");
 			tlb.removeFrames(head);
 			frameTable[head].setPage(frame);
 			tlb.setFrameNumber(head);
 			fifo.add(head);
 		}
-
 	}
 
 	public byte getFrameValue(int frameNumber, int offset) {

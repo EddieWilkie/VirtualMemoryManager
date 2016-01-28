@@ -2,7 +2,6 @@ package ace;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Random;
 
 public class TLB implements ITLB {
 
@@ -30,7 +29,7 @@ public class TLB implements ITLB {
 	}
 
 	public void setFrameNumber(int frameNumber) {
-		if (counter < 16) {
+		if (fifo.size() < pageNumber.length) {
 			fifo.add(counter);
 			pageNumber[counter] = currentPageNumber;
 			this.frameNumber[counter] = frameNumber;
@@ -42,7 +41,6 @@ public class TLB implements ITLB {
 			this.frameNumber[head] = frameNumber;
 			pageTable.setFrameNumber(frameNumber);
 			fifo.add(head);
-
 		}
 	}
 
@@ -63,7 +61,6 @@ public class TLB implements ITLB {
 
 	public float getPageFaultCount() {
 		return pageTable.getPageFaultCount();
-
 	}
 
 	public void removeFrames(int frameNumber) {

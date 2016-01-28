@@ -27,9 +27,7 @@ public class AddressTranslator {
 			System.out.print("Physical address: " + ((tlb.getFrameNumber(pageNumber) << 8) + offset) + " ");
 			System.out.println("Value: " + tlb.getValue(pageNumber, offset));
 		}
-			
-
-
+	
 	}
 
 	public static void main(String[] args) {
