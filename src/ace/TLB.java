@@ -10,6 +10,8 @@ public class TLB implements ITLB {
 	private IPageTable pageTable;
 	private int currentPageNumber = 0;
 	private int counter = 0;
+	private int hitCount = 0;
+	private int missCount = 0;
 	private Queue<Integer> fifo;
 
 	public TLB() {
@@ -46,6 +48,16 @@ public class TLB implements ITLB {
 
 	public int getFrameNumber(int pageNumber) {
 		currentPageNumber = pageNumber;
+		for(int i = 0; i < this.pageNumber.length; i++){
+			if(this.pageNumber[i] == pageNumber){
+				hitCount++;
+				System.out.print(" tlbHit: " + hitCount);
+				System.out.print(" pageNumber: " + pageNumber);
+				return frameNumber[i];
+			}
+		}
+		missCount++;
+		System.out.print(" tlbMiss: " + missCount);
 		return pageTable.getFrameNumber(pageNumber);
 	}
 
@@ -72,5 +84,12 @@ public class TLB implements ITLB {
 			}
 		}
 		pageTable.removeFrameNumber(frameNumber);
+	}
+	public void statistics(){
+		
+		System.out.println("PageFault: " + pageTable.getPageFaultCount());
+		System.out.println("PageHit: " + pageTable.getPageHitCount());
+		System.out.println("TLB hit: " + (hitCount));
+		
 	}
 }

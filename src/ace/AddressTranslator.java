@@ -24,16 +24,19 @@ public class AddressTranslator {
 			pageNumber = (i >> 8);
 			offset = (i & 0xFF);
 			System.out.print("Virtual address: " + i + " ");
-			System.out.print("Physical address: " + ((tlb.getFrameNumber(pageNumber) << 8) + offset) + " ");
+			System.out.print(" Physical address: " + ((tlb.getFrameNumber(pageNumber) << 8) + offset) + " ");
 			System.out.println("Value: " + tlb.getValue(pageNumber, offset));
 		}
-	
+		tlb.statistics();
 	}
 
 	public static void main(String[] args) {
 		try {
 			AddressTranslator VMM = new AddressTranslator();
+			long start = System.currentTimeMillis();
 			VMM.begin();
+			long stop = System.currentTimeMillis();
+			System.out.println(stop - start);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

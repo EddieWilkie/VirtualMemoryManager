@@ -6,7 +6,8 @@ public class PageTable implements IPageTable {
 	private int[] pageTable = new int[256];
 	private IPhysicalMemory physicalMem;
 	private IBackingStorage backingStore;
-	private int pageHitCount, pageFaultCount;
+	private int pageFaultCount;
+	private int pageHitCount;
 	private int currentPageNumber;
 
 	public PageTable(IPhysicalMemory physicalMemory) {
@@ -41,9 +42,11 @@ public class PageTable implements IPageTable {
 
 	public int getFrameNumber(int pageNumber) {
 		if (pageTable[pageNumber] == -1)
-			pageFault(pageNumber);
+			return pageFault(pageNumber);
 		
-
+			pageHitCount++;
+			System.out.print(" pageHit: " + pageHitCount);
+			System.out.print(" pageNumber: " + pageNumber);
 		return pageTable[pageNumber];
 	}
 
@@ -52,23 +55,29 @@ public class PageTable implements IPageTable {
 	}
 
 	public int getValue(int pageNumber, int offset) {
-		if (pageTable[pageNumber] == -1)
-			pageFault(pageNumber);
 		
 		return physicalMem.getFrameValue(pageTable[pageNumber], offset);
 	}
 
-	private void pageFault(int pageNumber) {
+	private int pageFault(int pageNumber) {
 		try {
 			pageFaultCount++;
+			System.out.print(" pageFault: " + pageFaultCount);
+			System.out.print(" pageNumber: " + pageNumber);
 			currentPageNumber = pageNumber;
 			backingStore.readFrame(pageNumber);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return pageTable[pageNumber];
 	}
 
-	public float getPageFaultCount() {
+	public int getPageFaultCount() {
 		return pageFaultCount;
+	}
+	
+	public int getPageHitCount(){
+		return pageHitCount;
 	}
 }

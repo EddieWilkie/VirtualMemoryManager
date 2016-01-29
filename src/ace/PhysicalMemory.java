@@ -50,6 +50,7 @@ public class PhysicalMemory implements IPhysicalMemory {
 			for (int i = 0; i < b.length; i++) {
 				page[i] = b[i];
 			}
+			//page = b;
 		}
 
 		public byte getValue(int offset) {
